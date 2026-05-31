@@ -41,11 +41,15 @@
     rate: parseFloat(el.getAttribute("data-parallax")) || 0.1,
   }));
   const bar = $(".progress");
+  // only the transparent (hero) nav needs the scrolled state; inner pages are solid
+  const nav = $(".nav:not(.nav--solid)");
   let ticking = false;
 
   const frame = () => {
     const vh = window.innerHeight;
     const doc = document.documentElement;
+
+    if (nav) nav.classList.toggle("is-scrolled", doc.scrollTop > 60);
 
     if (!reduced) {
       for (const p of parallax) {
