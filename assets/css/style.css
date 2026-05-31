@@ -192,23 +192,10 @@ section { position: relative; }
   align-items: center;
   justify-content: space-between;
   padding: clamp(1rem, 2vw, 1.6rem) var(--gutter);
-  color: var(--paper);
-  transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
-}
-/* over the dark hero (top) the wordmark sits in light ink; once scrolled past
-   the hero we drop to a solid paper bar so the gold logo keeps its true colour */
-.nav.is-scrolled {
-  color: var(--ink);
-  background: color-mix(in srgb, var(--paper) 84%, transparent);
-  backdrop-filter: saturate(1.1) blur(8px);
-  border-bottom: 1px solid var(--line-soft);
-}
-/* solid variant for inner pages (no dark hero behind it) */
-.nav--solid {
-  color: var(--ink);
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  backdrop-filter: saturate(1.1) blur(8px);
-  border-bottom: 1px solid var(--line-soft);
+  /* difference blend keeps the wordmark legible over both the dark hero and
+     the pale page below — no background bar needed */
+  mix-blend-mode: difference;
+  color: #fff;
 }
 .nav__mark {
   font-family: var(--display);
