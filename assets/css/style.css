@@ -218,13 +218,6 @@ section { position: relative; }
   align-items: center;
   gap: 0.5em;
 }
-.nav__mark picture { display: flex; line-height: 0; }
-.nav__logo {
-  width: clamp(1.9rem, 2.6vw, 2.4rem);
-  height: auto;
-  aspect-ratio: 1 / 1;
-  display: block;
-}
 .nav__links { display: flex; gap: clamp(1.2rem, 3vw, 2.6rem); }
 .nav__links a {
   font-size: var(--step--1);
