@@ -151,37 +151,54 @@
     </section>
 
     <!-- ░░░ WORK / 実績 ░░░ -->
-    <section class="project shell wide" id="work" aria-labelledby="work-h">
+    <section class="works shell wide" id="work" aria-labelledby="work-h">
       <div class="works__head ghost" data-ghost="work">
         <h2 class="display" id="work-h" data-reveal>Selected<br>Work</h2>
-        <p data-reveal style="--delay:.1s"><span class="kicker">Project 01</span><br>つくったものを、つくった技術で語る。</p>
+        <p data-reveal style="--delay:.1s"><span class="kicker">Latest 3</span><br>最新の実績を3つ。すべては実績ページへ。</p>
       </div>
 
-      <article class="project__card" data-reveal>
-        <figure class="project__figure" data-parallax="0.05">
-          <picture>
-            <source srcset="assets/img/photo-js.webp" type="image/webp" />
-            <img src="assets/img/photo-js.jpg" width="956" height="1700"
-                 alt="制作環境のデスク" loading="lazy" />
-          </picture>
-        </figure>
-        <div class="project__body">
-          <p class="feature__no display">01</p>
-          <h3 class="project__title display">この<wbr>ポートフォリオ<span class="script">this very site</span></h3>
-          <p class="jp">いま見ているこのサイト自体が制作物。フレームワークに頼らず、HTML・CSS・素の JavaScript だけで一から組み上げた。マークアップから実装・文章まですべて自分で担当。</p>
-          <ul class="project__tags" aria-label="使用技術">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-          </ul>
-          <dl class="project__facts">
-            <div><dt>担当</dt><dd>設計 · マークアップ · 実装 · コピー</dd></div>
-            <div><dt>こだわり</dt><dd>レスポンシブ · アクセシビリティ · 軽量化</dd></div>
-            <div><dt>年</dt><dd>2026</dd></div>
-          </dl>
-          <a class="feature__link" href="https://github.com/ryotagubusiness-B1z/portfolio" target="_blank" rel="noopener"><span>GitHub でコードを見る</span> <i aria-hidden="true">→</i></a>
-        </div>
-      </article>
+      <ul class="worklist" role="list">
+        <!-- 01 — real -->
+        <li class="workcard" data-reveal>
+          <a class="workcard__media" href="https://github.com/ryotagubusiness-B1z/portfolio" target="_blank" rel="noopener" aria-label="このポートフォリオを GitHub で見る">
+            <picture>
+              <source srcset="assets/img/photo-js.webp" type="image/webp" />
+              <img src="assets/img/photo-js.jpg" width="956" height="1700" alt="制作環境のデスク" loading="lazy" />
+            </picture>
+            <span class="workcard__no display">01</span>
+          </a>
+          <div class="workcard__body">
+            <span class="workcard__year">2026</span>
+            <h3 class="workcard__title display">このポートフォリオ</h3>
+            <p class="jp">HTML・CSS・素の JavaScript だけで一から制作。設計から実装・文章まで担当。</p>
+            <ul class="workcard__tags" aria-label="使用技術"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </div>
+        </li>
+
+        <!-- 02 — placeholder -->
+        <li class="workcard workcard--soon" data-reveal style="--delay:.08s">
+          <div class="workcard__media" aria-hidden="true"><span class="workcard__no display">02</span></div>
+          <div class="workcard__body">
+            <span class="workcard__year">— —</span>
+            <h3 class="workcard__title display">Coming soon</h3>
+            <p class="jp">次の制作を準備中。ここに新しい実績が入ります。</p>
+            <ul class="workcard__tags" aria-label="使用技術"><li>WIP</li></ul>
+          </div>
+        </li>
+
+        <!-- 03 — placeholder -->
+        <li class="workcard workcard--soon" data-reveal style="--delay:.16s">
+          <div class="workcard__media" aria-hidden="true"><span class="workcard__no display">03</span></div>
+          <div class="workcard__body">
+            <span class="workcard__year">— —</span>
+            <h3 class="workcard__title display">Coming soon</h3>
+            <p class="jp">次の制作を準備中。ここに新しい実績が入ります。</p>
+            <ul class="workcard__tags" aria-label="使用技術"><li>WIP</li></ul>
+          </div>
+        </li>
+      </ul>
+
+      <a class="works__all feature__link" href="works.html" data-reveal><span>すべての実績を見る</span> <i aria-hidden="true">→</i></a>
     </section>
 
     <!-- ░░░ ABOUT ░░░ -->

@@ -101,6 +101,33 @@ h1, h2, h3 { font-weight: 400; line-height: 1; }
 .wide  { max-width: 1680px; margin-inline: auto; }
 .rule  { height: 1px; background: var(--line); border: 0; }
 
+.visually-hidden-h {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- Inner-page header -------------------------------------------------- */
+.page-head { padding-top: clamp(7rem, 16vh, 11rem); padding-bottom: clamp(2rem, 5vw, 4rem); }
+.page-head__title {
+  font-family: var(--display);
+  font-size: var(--step-4);
+  line-height: 0.86;
+  text-transform: uppercase;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  flex-wrap: wrap;
+}
+.page-head__sub {
+  font-family: var(--body);
+  font-size: var(--step-1);
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: var(--umber);
+}
+.page-head__lead { max-width: 48ch; margin-top: 1.4rem; color: var(--ink-soft); }
+.page-head .ghost::before { top: -0.18em; opacity: 0.1; }
+
 section { position: relative; }
 
 /* The eyebrow / kicker used across the page */
@@ -167,6 +194,14 @@ section { position: relative; }
   padding: clamp(1rem, 2vw, 1.6rem) var(--gutter);
   mix-blend-mode: difference;
   color: #fff;
+}
+/* solid variant for inner pages (no dark hero behind it) */
+.nav--solid {
+  mix-blend-mode: normal;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(1.1) blur(8px);
+  border-bottom: 1px solid var(--line-soft);
 }
 .nav__mark {
   font-family: var(--display);
@@ -470,6 +505,82 @@ section { position: relative; }
 }
 .project__facts dd { font-size: var(--step--1); text-align: right; }
 .project__body .feature__link { margin-top: auto; padding-top: 1.6rem; }
+
+/* ---- Work list (latest 3 grid, shared with works.html) ---------------- */
+.worklist {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+@media (min-width: 680px)  { .worklist { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .worklist { grid-template-columns: repeat(3, 1fr); } }
+
+.workcard { display: flex; flex-direction: column; }
+.workcard__media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 5;
+}
+.workcard__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.12);
+  transition: transform 1.1s var(--ease), filter 0.7s var(--ease);
+  will-change: transform;
+}
+.workcard__media:hover img { transform: scale(1.05); filter: grayscale(0); }
+.workcard__no {
+  position: absolute;
+  left: 0; bottom: 0;
+  font-size: var(--step-1);
+  line-height: 0.8;
+  padding: 0.3rem 0.7rem 0.2rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+.workcard--soon .workcard__media {
+  display: grid;
+  place-items: center;
+  background:
+    repeating-linear-gradient(-45deg, var(--paper-2) 0 14px, var(--paper-3) 14px 28px);
+}
+.workcard--soon .workcard__no {
+  position: static; background: none; border: 0;
+  color: var(--umber); opacity: 0.5; font-size: var(--step-2);
+}
+.workcard--soon { opacity: 0.78; }
+
+.workcard__body { padding-top: 1.1rem; }
+.workcard__year {
+  font-size: var(--step--1); letter-spacing: 0.22em; color: var(--umber);
+}
+.workcard__title {
+  font-family: var(--display);
+  font-size: var(--step-1);
+  line-height: 1.05;
+  margin: 0.35rem 0 0.6rem;
+}
+.workcard__body p.jp { font-size: var(--step--1); line-height: 1.8; max-width: 38ch; }
+.workcard__tags {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+.workcard__tags li {
+  font-size: 0.72rem; letter-spacing: 0.1em;
+  padding: 0.25em 0.7em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--umber);
+}
+.works__all {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
 
 /* ============================================================================
    PULL QUOTE — full-bleed shadow band
