@@ -559,17 +559,12 @@ section { position: relative; }
   border-top: 1px solid var(--line);
   border-right: 1px solid var(--line);
 }
-.workcard--soon .workcard__media {
-  display: grid;
-  place-items: center;
-  background:
-    repeating-linear-gradient(-45deg, var(--paper-2) 0 14px, var(--paper-3) 14px 28px);
+/* empty / reserved slot — left intentionally blank */
+.workcard--empty .workcard__media {
+  background: transparent;
+  border: 1px dashed var(--line);
 }
-.workcard--soon .workcard__no {
-  position: static; background: none; border: 0;
-  color: var(--umber); opacity: 0.5; font-size: var(--step-2);
-}
-.workcard--soon { opacity: 0.78; }
+.workcard--empty { opacity: 0.5; }
 
 .workcard__body { padding-top: 1.1rem; }
 .workcard__year {
