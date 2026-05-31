@@ -1,5 +1,5 @@
 /* ============================================================================
-   ÉCLAT — interaction layer
+   Forgé — interaction layer
    Vanilla, dependency-free. rAF-throttled. Honours prefers-reduced-motion.
    Motion should read as a consequence of intent, never decoration.
    ========================================================================== */
