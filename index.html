@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Forgé — 技術を価値に。 / The Portfolio of R</title>
-  <meta name="description" content="つくる技術を、届く価値へ。HTML・CSS・JavaScript・Python で学び続けるフロントエンドエンジニア R のポートフォリオ。" />
+  <meta name="description" content="つくる技術を、届く価値へ。HTML・CSS・JavaScript・TypeScript・React・Python・PHP で学び続けるフロントエンドエンジニア R のポートフォリオ。" />
   <meta name="theme-color" content="#f3efe6" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <meta property="og:title" content="Forgé — 技術を価値に。 / The Portfolio of R" />
@@ -63,7 +63,7 @@
     <section class="works shell wide" id="works" aria-labelledby="works-h">
       <div class="works__head ghost" data-ghost="skills">
         <h2 class="display" id="works-h" data-reveal>What I<br>Use</h2>
-        <p data-reveal style="--delay:.1s"><span class="kicker">Stack 01 — 04</span><br>いま手を動かせる言語と、その経験年数。</p>
+        <p data-reveal style="--delay:.1s"><span class="kicker">Stack 01 — 07</span><br>いま手を動かせる言語と、その経験年数。</p>
       </div>
 
       <!-- I -->
@@ -114,8 +114,8 @@
         </figure>
         <div class="feature__text" data-reveal style="--delay:.08s">
           <p class="feature__no display">03</p>
-          <h3 class="feature__title display">JavaScript<span class="script">1 year</span></h3>
-          <p class="meta">経験年数 &nbsp;·&nbsp; 1年</p>
+          <h3 class="feature__title display">JavaScript<span class="script">2 years</span></h3>
+          <p class="meta">経験年数 &nbsp;·&nbsp; 2年</p>
           <p class="jp">DOM 操作やスクロール連動など、素の JavaScript でインタラクションを実装。依存を増やしすぎず、軽くて壊れにくい動きをつくることを心がけている。</p>
         </div>
       </article>
@@ -124,17 +124,71 @@
       <article class="feature feature--d">
         <figure class="feature__figure" data-reveal data-parallax="0.07">
           <picture>
+            <source srcset="assets/img/photo-linen.webp" type="image/webp" />
+            <img src="assets/img/photo-linen.jpg" width="1920" height="1280"
+                 alt="リネンに広げたノートと道具" loading="lazy" />
+          </picture>
+          <figcaption>04 — TypeScript</figcaption>
+        </figure>
+        <div class="feature__text" data-reveal style="--delay:.08s">
+          <p class="feature__no display">04</p>
+          <h3 class="feature__title display">TypeScript<span class="script">1 year</span></h3>
+          <p class="meta">経験年数 &nbsp;·&nbsp; 1年</p>
+          <p class="jp">型システムで安全に。型注釈やインターフェースで意図を明確にし、補完とコンパイル時チェックで壊れにくいコードを書く。規模が大きくなっても見通しの効く設計を心がける。</p>
+        </div>
+      </article>
+
+      <!-- V -->
+      <article class="feature feature--e">
+        <figure class="feature__figure" data-reveal data-parallax="0.05">
+          <picture>
+            <source srcset="assets/img/photo-js.webp" type="image/webp" />
+            <img src="assets/img/photo-js.jpg" width="956" height="1700"
+                 alt="木の机の上のカタログとデバイス" loading="lazy" />
+          </picture>
+          <figcaption>05 — React</figcaption>
+        </figure>
+        <div class="feature__text" data-reveal style="--delay:.08s">
+          <p class="feature__no display">05</p>
+          <h3 class="feature__title display">React<span class="script">1 year</span></h3>
+          <p class="meta">経験年数 &nbsp;·&nbsp; 1年</p>
+          <p class="jp">コンポーネント単位で UI を組み立てる。状態管理やフックを使い、再利用しやすく見通しの良い画面を設計。宣言的な記述で複雑な操作も整理して扱う。</p>
+        </div>
+      </article>
+
+      <!-- VI -->
+      <article class="feature feature--f">
+        <figure class="feature__figure" data-reveal data-parallax="0.07">
+          <picture>
             <source srcset="assets/img/photo-python.webp" type="image/webp" />
             <img src="assets/img/photo-python.jpg" width="1133" height="1700"
                  alt="布に落ちた植物の影" loading="lazy" />
           </picture>
-          <figcaption>04 — Python</figcaption>
+          <figcaption>06 — Python</figcaption>
         </figure>
         <div class="feature__text" data-reveal style="--delay:.08s">
-          <p class="feature__no display">04</p>
+          <p class="feature__no display">06</p>
           <h3 class="feature__title display">Python<span class="script">1 year</span></h3>
           <p class="meta">経験年数 &nbsp;·&nbsp; 1年</p>
           <p class="jp">スクリプトや自動化、データ処理に活用。面倒な手作業をまとめて片付けたり、簡単なツールを書いたりと、開発まわりの効率化に使っている。</p>
+        </div>
+      </article>
+
+      <!-- VII -->
+      <article class="feature feature--g">
+        <figure class="feature__figure" data-reveal data-parallax="0.06">
+          <picture>
+            <source srcset="assets/img/photo-css.webp" type="image/webp" />
+            <img src="assets/img/photo-css.jpg" width="1700" height="1133"
+                 alt="暖色光に浮かぶ積まれた本" loading="lazy" />
+          </picture>
+          <figcaption>07 — PHP</figcaption>
+        </figure>
+        <div class="feature__text" data-reveal style="--delay:.08s">
+          <p class="feature__no display">07</p>
+          <h3 class="feature__title display">PHP<span class="script">1 year</span></h3>
+          <p class="meta">経験年数 &nbsp;·&nbsp; 1年</p>
+          <p class="jp">サーバーサイドの定番。フォーム処理や簡単な動的ページ、データのやり取りなどに使い、フロントとバックエンドを橋渡しする実装に活用している。</p>
         </div>
       </article>
     </section>
@@ -194,11 +248,11 @@
       <div class="about__grid">
         <div class="about__body ghost ghost--tight" data-ghost="about">
           <h2 class="display" id="about-h" data-reveal>About Me</h2>
-          <p class="jp" data-reveal style="--delay:.06s">R は東京を拠点とするフロントエンドエンジニア。HTML / CSS を軸に、JavaScript・Python まで扱い、Web をつくる。</p>
+          <p class="jp" data-reveal style="--delay:.06s">R は東京を拠点とするフロントエンドエンジニア。HTML / CSS を軸に、JavaScript・TypeScript・React・Python・PHP まで扱い、Web をつくる。</p>
           <p class="jp" data-reveal style="--delay:.12s">「つくる技術を、届く価値へ」を信条に、見た目の美しさだけでなく、速度・アクセシビリティ・コードの読みやすさまで意識して制作する。小さな手応えの良さにこだわり抜く。</p>
           <ul class="about__list" data-reveal style="--delay:.16s">
             <li><span>Role</span><span>Front-end Developer</span></li>
-            <li><span>Stack</span><span>HTML · CSS · JavaScript · Python</span></li>
+            <li><span>Stack</span><span>HTML · CSS · JavaScript · TypeScript · React · Python · PHP</span></li>
             <li><span>Based in</span><span>Tokyo, Japan</span></li>
             <li><span>Status</span><span>お仕事のご相談を受付中</span></li>
           </ul>
