@@ -393,6 +393,14 @@ section { position: relative; }
 .feature--d .feature__figure { grid-column: 5 / 13; order: 2; }
 .feature--d .feature__text   { grid-column: 1 / 5;  order: 1; }
 .feature--d .feature__figure img { aspect-ratio: 9 / 11; }
+.feature--e .feature__figure { grid-column: 1 / 8; }
+.feature--e .feature__text   { grid-column: 9 / 13; }
+.feature--f .feature__figure { grid-column: 6 / 13; order: 2; }
+.feature--f .feature__text   { grid-column: 1 / 5;  order: 1; }
+.feature--f .feature__figure img { aspect-ratio: 3 / 4; }
+.feature--g .feature__figure { grid-column: 2 / 9; }
+.feature--g .feature__text   { grid-column: 9 / 13; }
+.feature--g .feature__figure img { aspect-ratio: 5 / 6; }
 
 @media (max-width: 760px) {
   .feature { grid-template-columns: 1fr; }
