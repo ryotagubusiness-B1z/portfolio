@@ -1,1 +1,130 @@
-(()=>{"use strict";const e=window.matchMedia("(prefers-reduced-motion: reduce)").matches,t=(e,t=document)=>t.querySelector(e),n=(e,t=document)=>[...t.querySelectorAll(e)],r=t("#year");r&&(r.textContent=(new Date).getFullYear());const s=n("[data-reveal]");if(e)s.forEach(e=>e.classList.add("is-in"));else if("IntersectionObserver"in window){const e=new IntersectionObserver(t=>{for(const n of t)n.isIntersecting&&(n.target.classList.add("is-in"),e.unobserve(n.target))},{rootMargin:"0px 0px -12% 0px",threshold:.12});s.forEach(t=>e.observe(t))}else s.forEach(e=>e.classList.add("is-in"));const o=n("[data-parallax]").map(e=>({el:e,rate:parseFloat(e.getAttribute("data-parallax"))||.1})),a=t(".progress");let i=!1;const c=()=>{const t=window.innerHeight,n=document.documentElement;if(!e)for(const e of o){const n=e.el.getBoundingClientRect(),r=-((n.top+n.height/2-t/2)/t*e.rate*t).toFixed(2);e.el.style.transform=`translate3d(0, ${r}px, 0)`}if(a){const e=n.scrollHeight-t,r=e>0?n.scrollTop/e:0;a.style.transform=`scaleX(${r.toFixed(4)})`}i=!1},l=()=>{i||(i=!0,requestAnimationFrame(c))};window.addEventListener("scroll",l,{passive:!0}),window.addEventListener("resize",l,{passive:!0}),c(),!e&&window.matchMedia("(pointer: fine)").matches&&n(".feature__link, .nav__links a, .contact__mail").forEach(e=>{e.style.transition="transform .4s cubic-bezier(.16,1,.3,1)",e.addEventListener("pointermove",t=>{const n=e.getBoundingClientRect(),r=(t.clientX-n.left-n.width/2)/n.width,s=(t.clientY-n.top-n.height/2)/n.height;e.style.transform=`translate(${(6*r).toFixed(2)}px, ${(5*s).toFixed(2)}px)`}),e.addEventListener("pointerleave",()=>{e.style.transform="translate(0,0)"})}),n('a[href^="#"]').forEach(n=>{n.addEventListener("click",r=>{const s=n.getAttribute("href");if(s.length<2)return;const o=t(s);o&&(r.preventDefault(),o.scrollIntoView({behavior:e?"auto":"smooth",block:"start"}),history.pushState(null,"",s))})});const d=e=>(e.preventDefault(),!1);["contextmenu","copy","cut","selectstart","dragstart"].forEach(e=>document.addEventListener(e,d)),document.addEventListener("keydown",e=>{const t=(e.key||"").toLowerCase();return"F12"===e.key?d(e):(!e.ctrlKey&&!e.metaKey||e.shiftKey||"u"!==t&&"s"!==t&&"c"!==t)&&(!e.ctrlKey&&!e.metaKey||!e.shiftKey||"i"!==t&&"j"!==t&&"c"!==t)?void 0:d(e)})})();
+(() => {
+  "use strict";
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+  // current year in the footer
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // reveal elements as they scroll into view
+  const reveals = $$("[data-reveal]");
+  if (reduced) {
+    reveals.forEach((el) => el.classList.add("is-in"));
+  } else if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add("is-in"));
+  }
+
+  // one rAF loop for parallax + scroll progress bar
+  const parallax = $$("[data-parallax]").map((el) => ({
+    el,
+    rate: parseFloat(el.getAttribute("data-parallax")) || 0.1,
+  }));
+  const bar = $(".progress");
+  let ticking = false;
+
+  const frame = () => {
+    const vh = window.innerHeight;
+    const doc = document.documentElement;
+
+    if (!reduced) {
+      for (const p of parallax) {
+        const rect = p.el.getBoundingClientRect();
+        const offset = (rect.top + rect.height / 2 - vh / 2) / vh;
+        const shift = -(offset * p.rate * vh).toFixed(2);
+        p.el.style.transform = `translate3d(0, ${shift}px, 0)`;
+      }
+    }
+
+    if (bar) {
+      const max = doc.scrollHeight - vh;
+      const progress = max > 0 ? doc.scrollTop / max : 0;
+      bar.style.transform = `scaleX(${progress.toFixed(4)})`;
+    }
+
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(frame);
+    }
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  frame();
+
+  // subtle magnetic hover on key links (fine pointers only)
+  if (!reduced && window.matchMedia("(pointer: fine)").matches) {
+    $$(".feature__link, .nav__links a, .contact__mail").forEach((el) => {
+      el.style.transition = "transform .4s cubic-bezier(.16,1,.3,1)";
+      el.addEventListener("pointermove", (ev) => {
+        const rect = el.getBoundingClientRect();
+        const mx = (ev.clientX - rect.left - rect.width / 2) / rect.width;
+        const my = (ev.clientY - rect.top - rect.height / 2) / rect.height;
+        el.style.transform = `translate(${(mx * 6).toFixed(2)}px, ${(my * 5).toFixed(2)}px)`;
+      });
+      el.addEventListener("pointerleave", () => {
+        el.style.transform = "translate(0,0)";
+      });
+    });
+  }
+
+  // smooth in-page anchors
+  $$('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      if (id.length < 2) return;
+      const target = $(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "start",
+      });
+      history.pushState(null, "", id);
+    });
+  });
+
+  // discourage casual copying / source peeking
+  const stop = (e) => {
+    e.preventDefault();
+    return false;
+  };
+  ["contextmenu", "copy", "cut", "selectstart", "dragstart"].forEach((ev) =>
+    document.addEventListener(ev, stop),
+  );
+  document.addEventListener("keydown", (e) => {
+    const k = (e.key || "").toLowerCase();
+    if (e.key === "F12") return stop(e);
+    if (
+      (e.ctrlKey || e.metaKey) &&
+      !e.shiftKey &&
+      (k === "u" || k === "s" || k === "c")
+    )
+      return stop(e);
+    if (
+      (e.ctrlKey || e.metaKey) &&
+      e.shiftKey &&
+      (k === "i" || k === "j" || k === "c")
+    )
+      return stop(e);
+  });
+})();
