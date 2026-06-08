@@ -9,6 +9,43 @@
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // dark mode toggle
+  const themeBtn = $(".nav__theme");
+  const root = document.documentElement;
+  if (!root.getAttribute("data-theme")) root.setAttribute("data-theme", "light");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    });
+  }
+
+  // mobile hamburger menu
+  const burger = $(".nav__burger");
+  const mobileMenu = $("#mobile-menu");
+  if (burger && mobileMenu) {
+    const openMenu = () => {
+      burger.setAttribute("aria-expanded", "true");
+      mobileMenu.classList.add("is-open");
+      mobileMenu.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+    const closeMenu = () => {
+      burger.setAttribute("aria-expanded", "false");
+      mobileMenu.classList.remove("is-open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+    burger.addEventListener("click", () => {
+      burger.getAttribute("aria-expanded") === "true" ? closeMenu() : openMenu();
+    });
+    $$(".mobile-menu nav a").forEach((a) => a.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && mobileMenu.classList.contains("is-open")) closeMenu();
+    });
+  }
+
   // reveal elements as they scroll into view
   const reveals = $$("[data-reveal]");
   if (reduced) {
